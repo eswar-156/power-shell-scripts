@@ -18,7 +18,7 @@ New-AzSqlDatabase -ResourceGroupName ev-log-rg -Name sql-database-ev-156 -Editio
 
          #Creating Storage Account
 
-$stgacc = New-AzStorageAccount -ResourceGroupNam ev-log-rg -Location 'east us' -Name stg-acc-ev-156 -SkuName Standard_LRS -Kind StorageV2 -AccessTier Hot -Verbose
+$stgacc = New-AzStorageAccount -ResourceGroupNam ev-log-rg -Location 'east us' -Name stgaccev156 -SkuName Standard_LRS -Kind StorageV2 -AccessTier Hot -Verbose
   
           #Create container in Storage Account
 
@@ -30,6 +30,6 @@ New-AzStorageContainer -Name backkuppp -Context $stg -Permission Blob
 
 $user = 'eswar'
 $pass = ConvertTo-SecureString "HAPPYboy@123" -AsPlainText -Force
-$stgaccesskey = Get-AzStorageAccountKey -ResourceGroupName ev-log-rg -Name stg-acc-ev-156
+$stgaccesskey = Get-AzStorageAccountKey -ResourceGroupName ev-log-rg -Name stgaccev156
 
-New-AzSqlDatabaseExport -DatabaseName sql-database-ev-156 -ServerName sql-server-ev-156 -StorageKeyType StorageAccessKey -StorageKey $stgaccesskey.Value[0] -StorageUri 'https://stg-acc-ev-156.blob.core.windows.net/backkuppp/sql-database-ev-156-2021-10-27-14-12.bacpac' -AdministratorLogin $user -AdministratorLoginPassword $pass -Verbose -ResourceGroupName ev-log-rg
+New-AzSqlDatabaseExport -DatabaseName sql-database-ev-156 -ServerName sql-server-ev-156 -StorageKeyType StorageAccessKey -StorageKey $stgaccesskey.Value[0] -StorageUri 'https://stgaccev156.blob.core.windows.net/backkuppp/sql-database-ev-156-2021-10-27-14-12.bacpac' -AdministratorLogin $user -AdministratorLoginPassword $pass -Verbose -ResourceGroupName ev-log-rg
