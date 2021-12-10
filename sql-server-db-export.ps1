@@ -14,7 +14,7 @@ New-AzSqlServerFirewallRule -ServerName sql-server-ev-156 -FirewallRuleName demo
 
         #SQL DB
 
-New-AzSqlDatabase -ResourceGroupName ev-log-rg -Name sql-database-ev-156 -Edition Basic -BackupStorageRedundancy Geo -ServerName sql-server-ev-156 -verbos
+New-AzSqlDatabase -ResourceGroupName ev-log-rg -Name sql-database-ev-156 -Edition Basic -BackupStorageRedundancy Geo -ServerName sql-server-ev-156 -verbose
 
          #Creating Storage Account
 
@@ -32,4 +32,4 @@ $user = 'eswar'
 $pass = ConvertTo-SecureString "HAPPYboy@123" -AsPlainText -Force
 $stgaccesskey = Get-AzStorageAccountKey -ResourceGroupName ev-log-rg -Name stgaccev156
 
-New-AzSqlDatabaseExport -DatabaseName sql-database-ev-156 -ServerName sql-server-ev-156 -StorageKeyType StorageAccessKey -StorageKey $stgaccesskey.Value[0] -StorageUri 'https://stgaccev156.blob.core.windows.net/backkuppp/sql-database-ev-156-2021-10-27-14-12.bacpac' -AdministratorLogin $user -AdministratorLoginPassword $pass -Verbose -ResourceGroupName ev-log-rg
+New-AzSqlDatabaseExport -DatabaseName sql-database-ev-156 -ServerName sql-server-ev-156 -StorageKeyType StorageAccessKey -StorageKey $stgaccesskey.Value[0] -StorageUri 'https://stgaccev156.blob.core.windows.net/backkuppp/sql-database-ev-156-2021-10-27-14-12.bacpac' -AdministratorLogin $user -AdministratorLoginPassword $pass -ResourceGroupName ev-log-rg -verbose
